@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Resources from './components/Resources';
 import SessionInfo from './components/SessionInfo';
 import CharacterCreation from './components/CharacterCreation';
+import RulesExample from './components/RulesExample';
  
 class App extends Component {
   render() {
@@ -17,12 +18,13 @@ class App extends Component {
             <li><NavLink to="/resources">Resources</NavLink></li>
             <li><NavLink to="/sessionInfo">Session Info</NavLink></li>
             <li><NavLink to="/charactercreation">Character Creation</NavLink></li>
+            <li><NavLink to="/rulesexample">Gameplay Example</NavLink></li>
           </ul>
           <div className="content">
              <Route exact path="/" component={Home}/>
              <Route path="/resources" component={Resources}/>
              <Route path="/sessionInfo" component={SessionInfo}/>
-             <Route path="/charactercreation" component={CharacterCreation} />
+             <Route path="/rulesexample" component={RulesExample} />
           </div>
         </div>
       </HashRouter>
