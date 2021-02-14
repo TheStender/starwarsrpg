@@ -23,6 +23,7 @@ class App extends Component {
           <div className="content">
              <Route exact path="/" component={Home}/>
              <Route path="/resources" component={Resources}/>
+             <Route path="/charactercreation" component={CharacterCreation}/>
              <Route path="/sessionInfo" component={SessionInfo}/>
              <Route path="/rulesexample" component={RulesExample} />
           </div>
