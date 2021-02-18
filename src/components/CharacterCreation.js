@@ -19,6 +19,8 @@ class CharacterCreation extends Component {
         <br />
         <h4>Step 3 - Choose a specialization</h4>
         <p>I choose a Gunslinger since I want to shoot first and ask questions never.</p>
+        <h4>Step 4 - Spend XP</h4>
+        <p>Use your starting XP to buy characteristics upgrades, and skills on your Specialization Talent Tree</p>
       </div>
     );
   }

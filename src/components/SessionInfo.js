@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Session0 from './sessionComponents/session0';
+import Session1 from './sessionComponents/session1';
  
 class SessionInfo extends Component {
 
@@ -10,17 +12,9 @@ class SessionInfo extends Component {
         <p>Here you will find information on sessions, both before and after the game</p>
         <br />
         <p>------------------------------------------------------------------------------------------</p>
-        <h4>Session 0</h4>
-        <h6>Thursday, February 18th at 5:30pm</h6>
-        <br />
-        <p>Overview</p>
-        <ul>
-          <li>Character Creation Overview</li>
-          <li>Game Overview</li>
-          <li>Rules Overview and Demo</li>
-          <li>Finish Character Creation</li>
-        </ul>
+        <Session0 />
         <p>------------------------------------------------------------------------------------------</p>
+        <Session1 />
       </div>
     );
   }
