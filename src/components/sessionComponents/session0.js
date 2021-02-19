@@ -11,10 +11,10 @@ class Session0 extends Component {
         <br />
         <p>Overview</p>
         <ul>
-          <li>Character Creation Overview</li>
-          <li>Game Overview</li>
-          <li>Rules Overview and Demo</li>
-          <li>Finish Character Creation</li>
+          <li>Created Characters</li>
+          <li>Went over quick rules/dice example</li>
+          <li>Showed the Oggdude App</li>
+          <li>Gave some game background</li>
         </ul>
       </div>
     );

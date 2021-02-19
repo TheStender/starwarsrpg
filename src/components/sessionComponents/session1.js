@@ -16,6 +16,12 @@ class Session1 extends Component {
               <li>This will be a chance for everyone (including me) to get comfortable with the rules and ease into the story</li>
             </ul>
         </ul>
+        <h3>To have ready for Session 1:</h3>
+        <ul>
+          <li>A character sheet that is at least 95% complete</li>
+          <li>At least some character background</li>
+          <li>A reason for being at The Wheel - gambling, entertainment, job hunting, en route to another destination</li>
+        </ul>
       </div>
     );
   }
