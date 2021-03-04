@@ -7,7 +7,7 @@ class CastOfCharacters extends Component {
       <div>
         <h2>The Players</h2>
         <ul>
-          <li>Jack - Engineer Mechanic</li>
+          <li>Jack - Engineer Saboteur</li>
           <li>Makai - Droid Ace Pilot/Medic</li>
           <li>Mike - Human Sentinel Shien Expert</li>
           <li>Thom - Droid Soldier Heavy</li>

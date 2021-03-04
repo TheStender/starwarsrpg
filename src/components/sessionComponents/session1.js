@@ -7,7 +7,7 @@ class Session1 extends Component {
       <div>
         
         <h4>Session 1</h4>
-        <h6>Thursday, February 25th at 5:30pm</h6>
+        <h6>Thursday, March 4th at 5:30pm</h6>
         <br />
         <p>Overview</p>
         <ul>
