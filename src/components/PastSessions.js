@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Session0 from './sessionComponents/session0';
+import Session1 from './sessionComponents/session1'
  
 class PastSessions extends Component {
 
@@ -12,6 +13,8 @@ class PastSessions extends Component {
         <br />
         <p>------------------------------------------------------------------------------------------</p>
         <Session0 />
+        <p>------------------------------------------------------------------------------------------</p>
+        <Session1 />
         <p>------------------------------------------------------------------------------------------</p>
       </div>
     );

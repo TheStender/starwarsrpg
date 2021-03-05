@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Session1 from './sessionComponents/session1';
  
 class FutureSessions extends Component {
 
@@ -11,7 +10,6 @@ class FutureSessions extends Component {
         <p>Information for upcoming sessions</p>
         <br />
         <p>------------------------------------------------------------------------------------------</p>
-        <Session1 />
         <p>------------------------------------------------------------------------------------------</p>
       </div>
     );

@@ -14,10 +14,11 @@ class CastOfCharacters extends Component {
         </ul>
         <h2>NPCs</h2>
         <ul>
-          <li>Random Guy #1</li>
-          <li>Emperor Palpatine</li>
-          <li>Jar Jar Binks</li>
-          <li>Wesley Crusher</li>
+          <li>Flynn</li>
+        </ul>
+        <h2>Ship</h2>
+        <ul>
+          <li>YT-2400</li>
         </ul>
       </div>
     );
