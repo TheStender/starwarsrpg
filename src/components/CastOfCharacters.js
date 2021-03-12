@@ -15,6 +15,7 @@ class CastOfCharacters extends Component {
         <h2>NPCs</h2>
         <ul>
           <li>Flynn</li>
+          <li>Captain Aleene - Bothan - 2nd in Command at Titan Base</li>
         </ul>
         <h2>Ship</h2>
         <ul>
