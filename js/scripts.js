@@ -39,30 +39,28 @@ function rollDice(diceType, quantity) {
     // Determine the result based on the roll
     switch (rollResult) {
       case 1:
-        successes++;
         break;
       case 2:
         successes++;
         break;
       case 3:
         successes++;
-        advantages++;
         break;
       case 4:
-        advantages++;
+        successes+=2;
         break;
       case 5:
-        successes += 2;
+        advantages++;
         break;
       case 6:
-        successes++;
-        advantages += 2;
+        advantages++;
         break;
       case 7:
-        advantages += 2;
+        successes++;
+        advantages++;
         break;
       case 8:
-        advantages += 3;
+        advantages+=2;
         break;
     }
   }
