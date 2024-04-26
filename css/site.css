@@ -29,3 +29,11 @@ body > main {
 .minHeight {
   min-height: 80vh;
 }
+
+.dice-wrapper {
+  text-align: center;
+}
+
+.btn-margin {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
