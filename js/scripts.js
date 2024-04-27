@@ -71,7 +71,7 @@ function rollProficiencyDice(quantity) {
   // Roll the specified quantity of proficiency dice
   for (let i = 0; i < quantity; i++) {
     // Roll the proficiency die (a 12-sided die)
-    const rollResult = Math.floor(Math.random() * 8) + 1;
+    const rollResult = Math.floor(Math.random() * 12) + 1;
 
     // Determine the result based on the roll
     switch (rollResult) {
@@ -103,7 +103,7 @@ function rollProficiencyDice(quantity) {
         // No successes or advantages gained for other results
         break;
     }
-    console.log("Roll of prof dice " + (i+1) + " was " + rollResult);
+    console.log("Roll of proficiency dice " + (i+1) + " was " + rollResult);
   }
 
   // Return the result as an object
@@ -122,7 +122,7 @@ function rollBoostDice(quantity) {
   // Roll the specified quantity of boost dice
   for (let i = 0; i < quantity; i++) {
     // Roll the boost die (an 6-sided die)
-    const rollResult = Math.floor(Math.random() * 8) + 1;
+    const rollResult = Math.floor(Math.random() * 6) + 1;
 
     // Determine the result based on the roll
     switch (rollResult) {
@@ -197,8 +197,90 @@ function rollDifficultyDice(quantity) {
 }
 
 // Function to roll the challenge dice
+function rollChallengeDice(quantity) {
+  let totalFailures = 0;
+  let totalThreats = 0;
+  let totalDespair = 0;
+
+  // Roll the specified quantity of challenge dice
+  for (let i = 0; i < quantity; i++) {
+    // Roll the challenge die (a 12-sided die)
+    const rollResult = Math.floor(Math.random() * 12) + 1;
+
+    // Determine the result based on the roll
+    switch (rollResult) {
+      case 2:
+      case 3:
+        totalFailures++;
+        break;
+      case 4:
+      case 5:
+        totalFailures += 2;
+        break;
+      case 6:
+      case 7:
+        totalThreats++;
+        break;
+      case 8:
+      case 9:
+        totalFailures++;
+        totalThreats++;
+        break;
+      case 10:
+      case 11:
+        totalThreats += 2;
+        break;
+      case 12:
+        totalDespair++;
+        break;
+      default:
+        // No successes or advantages gained for other results
+        break;
+    }
+    console.log("Roll of challenge dice " + (i+1) + " was " + rollResult);
+  }
+
+  // Return the result as an object
+  return {
+    totalFailures: totalFailures,
+    totalThreats: totalThreats,
+    totalDespair: totalDespair
+  };
+}
 
 // Function to roll the setback dice
+function rollSetbackDice(quantity) {
+  let totalFailures = 0;
+  let totalThreats = 0;
+
+  // Roll the specified quantity of setback dice
+  for (let i = 0; i < quantity; i++) {
+    // Roll the setback die (an 6-sided die)
+    const rollResult = Math.floor(Math.random() * 6) + 1;
+
+    // Determine the result based on the roll
+    switch (rollResult) {
+      case 1:
+      case 2:
+        break;
+      case 3:
+      case 4:
+        totalFailures += 2;
+        break;
+      case 5:
+      case 6:
+        totalThreats++;
+        break;
+    }
+    console.log("Roll of setback dice " + (i+1) + " was " + rollResult);
+  }
+
+  // Return the result as an object
+  return {
+    totalFailures: totalFailures,
+    totalThreats: totalThreats
+  };
+}
 
 // Function to roll the force dice
 
@@ -209,6 +291,7 @@ function rollAllDice() {
   let totalFailures = 0;
   let totalThreats = 0;
   let totalTriumphs = 0;
+  let totalDespair = 0;
 
   // Iterate over each selected dice type and roll the corresponding dice
   for (const diceType in selectedDice) {
@@ -236,8 +319,15 @@ function rollAllDice() {
         totalThreats += difficultyResult.totalThreats;
         break;
       case 'challenge':
+        const challengeResult = rollChallengeDice(quantity);
+        totalFailures += challengeResult.totalFailures;
+        totalThreats += challengeResult.totalThreats;
+        totalDespair += challengeResult.totalDespair;
         break;
       case 'setback':
+        const setbackResult = rollSetbackDice(quantity);
+        totalFailures += setbackResult.totalFailures;
+        totalThreats += setbackResult.totalThreats;
         break;
     }
   }
@@ -245,6 +335,7 @@ function rollAllDice() {
   // Calculate net successes and advantages after considering failures and threats
   const netSuccesses = totalSuccesses - totalFailures;
   const netAdvantages = totalAdvantages - totalThreats;
+  const netTriumphs = totalTriumphs - totalDespair;
 
   // Construct the result message based on net successes and advantages
   let resultMessage = "";
@@ -258,6 +349,12 @@ function rollAllDice() {
     resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${netAdvantages} Advantage${netAdvantages !== 1 ? 's' : ''}`;
   } else if (netAdvantages < 0) {
     resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${Math.abs(netAdvantages)} Threat${Math.abs(netAdvantages) !== 1 ? 's' : ''}`;
+  }
+
+  if (netTriumphs > 0) {
+    resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${netTriumphs} Triumph${netTriumphs !== 1 ? 's' : ''}`;
+  } else if (netTriumphs < 0) {
+    resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${Math.abs(netTriumphs)} Despair${Math.abs(netTriumphs) !== 1 ? 's' : ''}`;
   }
 
   // Display the result message
@@ -274,4 +371,5 @@ function resetDicePool() {
   });
   // Clear result message
   document.getElementById("result").innerText = "";
+  console.clear();
 }
