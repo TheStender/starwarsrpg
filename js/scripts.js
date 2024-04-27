@@ -329,6 +329,9 @@ function rollAllDice() {
         totalFailures += setbackResult.totalFailures;
         totalThreats += setbackResult.totalThreats;
         break;
+      case 'force':
+        console.log("Force Dice!");
+        break;
     }
   }
 
