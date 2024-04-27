@@ -283,6 +283,47 @@ function rollSetbackDice(quantity) {
 }
 
 // Function to roll the force dice
+function rollForceDice(quantity) {
+  let totalLightSide = 0;
+  let totalDarkSide = 0;
+
+  // Roll the specified quantity of force dice
+  for (let i = 0; i < quantity; i++) {
+    // Roll the force die (a 12-sided die)
+    const rollResult = Math.floor(Math.random() * 12) + 1;
+
+    // Determine the result based on the roll
+    switch (rollResult) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        totalDarkSide++;
+        break;
+      case 7:
+        totalDarkSide += 2;
+        break;
+      case 8:
+      case 9:
+        totalLightSide++;
+        break;
+      case 10:
+      case 11:
+      case 12:
+        totalLightSide += 2;
+        break;
+    }
+    console.log("Roll of force dice " + (i+1) + " was " + rollResult);
+  }
+
+  // Return the result as an object with total light side and dark side points
+  return {
+    totalLightSide: totalLightSide,
+    totalDarkSide: totalDarkSide
+  };
+}
 
 // Function to roll all selected dice and calculate totals
 function rollAllDice() {
@@ -292,6 +333,8 @@ function rollAllDice() {
   let totalThreats = 0;
   let totalTriumphs = 0;
   let totalDespair = 0;
+  let totalLightSide = 0;
+  let totalDarkSide = 0;
 
   // Iterate over each selected dice type and roll the corresponding dice
   for (const diceType in selectedDice) {
@@ -330,7 +373,9 @@ function rollAllDice() {
         totalThreats += setbackResult.totalThreats;
         break;
       case 'force':
-        console.log("Force Dice!");
+        const forceResult = rollForceDice(quantity);
+        totalLightSide += forceResult.totalLightSide;
+        totalDarkSide += forceResult.totalDarkSide;
         break;
     }
   }
@@ -358,6 +403,14 @@ function rollAllDice() {
     resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${netTriumphs} Triumph${netTriumphs !== 1 ? 's' : ''}`;
   } else if (netTriumphs < 0) {
     resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${Math.abs(netTriumphs)} Despair${Math.abs(netTriumphs) !== 1 ? 's' : ''}`;
+  }
+
+  if (totalLightSide > 0) {
+    resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${totalLightSide} Light Side Point${totalLightSide !== 1 ? 's' : ''}`;
+  }
+
+  if (totalDarkSide > 0) {
+    resultMessage += `${resultMessage.length > 0 ? ', ' : ''}${totalDarkSide} Dark Side Point${totalDarkSide !== 1 ? 's' : ''}`;
   }
 
   // Display the result message
